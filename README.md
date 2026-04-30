@@ -37,8 +37,8 @@ Users upload PDF / DOCX documents, the RAG service indexes them, and the chat UI
 git clone git@github.com:IS2AI/qolda-ui.git
 cd qolda-ui
 
-# Install deps (adjust to your environment manager)
-pip install fastapi uvicorn httpx pydantic pydantic-settings gradio python-dotenv
+# Install deps
+pip install -r requirements.txt
 
 # Configure
 cp .env.example .env
