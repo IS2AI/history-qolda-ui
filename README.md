@@ -117,16 +117,6 @@ Acc = (1/N) · Σ 𝟙[yᵢ = yᵢ*],     N = 1,081
 
 where `𝟙[·]` returns 1 on an exact match and 0 otherwise. No LLM judge is involved at this stage, so MCQ accuracy is fully reproducible and free from judge-model variability.
 
-Sample questions:
-
-| # | Question (Kazakh) | A | B | C | D | Answer |
-|---|---|---|---|---|---|:---:|
-| 1 | «Тарих-и Рашиди» еңбегін жазған ғалым? | Мұхаммед Хайдар Дулати | Масуд ибн Осман | Бабыр | Әбілғазы Баһадүр | A |
-| 2 | Қазақтың ең көп таралған ою-өрнегі | Түйемойын | Сыңармүйіз | Қосмүйіз | Қошқар мүйіз | D |
-| 3 | 1940–1980 жылдары бұқаралық ақпарат құралдарының рөлі | Технологиялық инновация | Саяси тұрақтылық | Қоғамдық пікірді қалыптастыру | Экономикалық даму | C |
-| 4 | МТС-тердің (машина-трактор станциялары) негізгі қызметі | Салық жинау | Техниканы жалға беру | Егінді қабылдау | Өнімді сату | B |
-| 5 | 1989 жылы қабылданған «Тілдер туралы» заңның басты жаңалығы | Қазақ тілі мемлекеттік мәртебе алды | Барлық тілдер жойылды | Латын әліпбиі міндетті болды | Орыс тілі мемлекеттік мәртебе алды | A |
-
 ### Multilingual Open-Ended Queries — [`issai/kz-history-queries-multilingual`](https://huggingface.co/datasets/issai/kz-history-queries-multilingual)
 
 A manually constructed set of 500 open-ended questions covering five thematic domains, prepared in Kazakh, Russian, and English for multilingual coverage of the Kazakhstan history domain:
