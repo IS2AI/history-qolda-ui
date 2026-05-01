@@ -34,8 +34,8 @@ Users upload PDF / DOCX documents, the RAG service indexes them, and the chat UI
 ## Setup
 
 ```bash
-git clone git@github.com:IS2AI/qolda-ui.git
-cd qolda-ui
+git clone git@github.com:IS2AI/history-qolda-ui.git
+cd history-qolda-ui
 
 # Install deps
 pip install -r requirements.txt
@@ -102,6 +102,40 @@ qolda-ui/
 ├── .env.example
 └── README.md
 ```
+
+## Datasets
+
+System evaluation uses two public datasets released alongside this project:
+
+### UNT Kazakhstan History MCQ — [`issai/unt-kz-history-mcq`](https://huggingface.co/datasets/issai/unt-kz-history-mcq)
+
+A 1,081-question multiple-choice benchmark drawn from the Kazakhstan UNT (Unified National Testing) history exam. Each of the four evaluated architectures runs the full set independently, producing 4,324 inference runs per evaluation cycle. Response quality is measured by exact string match between the model's predicted label and the ground-truth label in the evaluation CSV. Accuracy is:
+
+```
+Acc = (1/N) · Σ 𝟙[yᵢ = yᵢ*],     N = 1,081
+```
+
+where `𝟙[·]` returns 1 on an exact match and 0 otherwise. No LLM judge is involved at this stage, so MCQ accuracy is fully reproducible and free from judge-model variability.
+
+Sample questions:
+
+| # | Question (Kazakh) | A | B | C | D | Answer |
+|---|---|---|---|---|---|:---:|
+| 1 | «Тарих-и Рашиди» еңбегін жазған ғалым? | Мұхаммед Хайдар Дулати | Масуд ибн Осман | Бабыр | Әбілғазы Баһадүр | A |
+| 2 | Қазақтың ең көп таралған ою-өрнегі | Түйемойын | Сыңармүйіз | Қосмүйіз | Қошқар мүйіз | D |
+| 3 | 1940–1980 жылдары бұқаралық ақпарат құралдарының рөлі | Технологиялық инновация | Саяси тұрақтылық | Қоғамдық пікірді қалыптастыру | Экономикалық даму | C |
+| 4 | МТС-тердің (машина-трактор станциялары) негізгі қызметі | Салық жинау | Техниканы жалға беру | Егінді қабылдау | Өнімді сату | B |
+| 5 | 1989 жылы қабылданған «Тілдер туралы» заңның басты жаңалығы | Қазақ тілі мемлекеттік мәртебе алды | Барлық тілдер жойылды | Латын әліпбиі міндетті болды | Орыс тілі мемлекеттік мәртебе алды | A |
+
+### Multilingual Open-Ended Queries — [`issai/kz-history-queries-multilingual`](https://huggingface.co/datasets/issai/kz-history-queries-multilingual)
+
+A manually constructed set of 500 open-ended questions covering five thematic domains, prepared in Kazakh, Russian, and English for multilingual coverage of the Kazakhstan history domain:
+
+1. **Ancient Kazakhstan** (1–100)
+2. **Kazakh Kaganate** (101–200)
+3. **Soviet Period** (201–300)
+4. **Independence Era** (301–400)
+5. **Adversarial Trap Questions** (401–500) — embeds false premises, historical myths, and anachronisms to probe whether models can identify and correct faulty assumptions.
 
 ## License
 
